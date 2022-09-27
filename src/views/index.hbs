@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Hola
+        </h1>
+        <form action="/addData" method="post">
+            <legend>Agregar Dato</legend>
+            <div class="form-group">
+                <input type="text" id="rut" class="form-control" name="rut" placeholder="Rut">
+            </div>
+            <div class="form-group">
+            <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre">    
+            </div>
+            <button class="btn btn-primary">
+                Agregar
+            </button>
+        </form>
+
+
+        <hr>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= for(var i= 0; i< task.length; i++){%>
+                    <tr>
+                        <td>
+                            <%= i+1%>
+                        </td>
+                        <td>
+                            <strong> <%= task[i].rut%></strong>
+                        </td>
+                        <td>
+                            <%= task[i].nombre %>
+                        </td>
+                        <td>
+                            <a class="<%= task[i].status ? 'btn btn-success': 'btn btn-dark'%>" href="/turn/<%=task[i]._id%>">Done</a>
+                            <a id="delete" class="btn btn-danger" href="/delete/<%= task[i]._id%>">Delete</a>
+                        </td>
+                    </tr>
+                    <% }%>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("rut).focus();
+        document.getElementById("delete").addEventListener("click", function (e){
+        });
+    </script>
+</body>
+</html>
